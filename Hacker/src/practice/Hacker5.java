@@ -10,28 +10,30 @@ import java.util.regex.*;
 
 public class Hacker5 {
 
-    // Complete the miniMaxSum function below.
-    static void birthdayCakeCandles(int[] arr) {
-    	Integer[] arr_ = Arrays.stream(arr).boxed().toArray(Integer[]::new);
-    	arr = Arrays.stream(arr_).mapToInt(Integer::intValue).toArray(); 
-    	
-    	int origin = 0;
-    	int cnt = 0;
-    	for(int i : arr) {
-    		if(origin>0 && origin != i) {
-    			return;
-    		}
-    		origin = i;
-    		
-    		cnt++;
-    	}
-    	
-    	System.out.print(cnt);
-    	
+	// Complete the birthdayCakeCandles function below.
+    static int birthdayCakeCandles(int[] ar) {
+        Integer[] arr_ = Arrays.stream(ar).boxed().toArray(Integer[]::new);
+        Arrays.sort(arr_, Collections.reverseOrder());
+        ar = Arrays.stream(arr_).mapToInt(Integer::intValue).toArray(); 
+        
+        int origin = 0;
+        int cnt = 0;
+        for(int i : ar) {
+        	System.out.println(i);
+            if(origin>0 && origin != i) {
+                break;
+            }
+            origin = i;
+            
+            cnt++;
+        }
+        
+        return cnt;
     }
 
     public static void main(String[] args) {
-        int[] arr = new int[] {4,4,4,1,3};
-        birthdayCakeCandles(arr);
+        int[] arr = new int[] {3,2,1,3};
+        int cnt = birthdayCakeCandles(arr);
+        System.out.println(cnt);
     }
 }
